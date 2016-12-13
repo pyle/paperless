@@ -29,6 +29,8 @@ RUN mkdir -p $PAPERLESS_CONSUMPTION_DIR
 # Migrate database
 WORKDIR /usr/src/paperless/src
 RUN ./manage.py migrate
+# Collect static assets
+RUN ./manage.py collectstatic --no-input
 
 # Create user
 RUN groupadd -g 1000 paperless \
